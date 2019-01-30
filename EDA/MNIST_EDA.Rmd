@@ -1,0 +1,53 @@
+---
+title: "Exploratory Analysis of the MNIST Data"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. 
+
+This notebook documents the Exploratory Analysis of the MNIST Data Set from the Kaggle Challenge: Digital Recognizer.
+
+
+## Load the data
+```{r data}
+## path to the data
+digits.path <- "../data"
+digits.train.path <- paste(digits.path, "train.csv", sep = "/")
+
+digits.train <- read.csv(digits.train.path, header = TRUE)
+```
+
+## Previewing the Data
+From the Kaggle data description:
+
+>The data files train.csv and test.csv contain gray-scale images of hand-drawn digits, from zero through nine.
+>
+> Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. Each pixel has a single pixel-value associated with it, indicating the lightness or darkness of that pixel, with higher numbers meaning darker. This pixel-value is an integer between 0 and 255, inclusive.
+>
+> The training data set, (train.csv), has 785 columns. The first column, called "label", is the digit that was drawn by the user. The rest of the columns contain the pixel-values of the associated image.
+
+To see quickly see what we're dealing with, we'll visually inspect 12 ramdomly sampled images of each label.
+
+```{r images, fig.asp = 1.3}
+par(mfrow=c(10, 12), pty='s', mai=c(0.2, 0, 0, 0.1))
+for (lab in 0:9) {
+  subs <- digits.train[digits.train$label == lab, ]
+  index <- sample(1:nrow(subs), size = 12)
+  samp <- subs[index, ]
+  for (i in 1:12) {
+    img <- matrix(as.numeric(samp[i, -1]), 28, 28, byrow = TRUE)
+    image(t(img)[,28:1], axes = FALSE, col = grey(seq(1, 0, length = 256)))
+    box(lty = 'solid')
+    mtext(index[i], side = 1, cex = .7)
+  }
+}
+```
+
+We can see from this sample that there are significant differences between the images of the same digit. Some issues that immediately pop out are:
+
+* The digits have different "slants", for example image 2480 is written nearly diagonally. 
+* We see different styles of writing. The digit *7* and *2* are good examples. 
+* "Poor" handwriting, such as image 2753, is an issue we need to address in our classification algorithm.
+* Some digits are are more faded than others.
+
+While there are some issues, we also notice that the data is generally of good quality. There aren't any misclassifications that we see from this sample. The digits are also written "correctly"; there no digits written backwards for example. Lastly, we see that written digits are generally horizontally centered.
