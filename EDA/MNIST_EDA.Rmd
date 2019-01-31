@@ -5,7 +5,7 @@ output: html_notebook
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. 
 
-This notebook documents the Exploratory Analysis of the MNIST Data Set from the Kaggle Challenge: Digital Recognizer.
+This notebook documents the Exploratory Analysis of the MNIST Data Set from the Kaggle Challenge: Digit Recognizer.
 
 
 ## Load the data
@@ -25,6 +25,12 @@ From the Kaggle data description:
 > Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. Each pixel has a single pixel-value associated with it, indicating the lightness or darkness of that pixel, with higher numbers meaning darker. This pixel-value is an integer between 0 and 255, inclusive.
 >
 > The training data set, (train.csv), has 785 columns. The first column, called "label", is the digit that was drawn by the user. The rest of the columns contain the pixel-values of the associated image.
+
+First let's check that we have an even distribution of digits in our training data
+```{r digit_count}
+barplot(table(digits.train[, 1]), col = "blue", main = "Count of Digits in Training Set")
+```
+
 
 To see quickly see what we're dealing with, we'll visually inspect 12 ramdomly sampled images of each label.
 
@@ -47,7 +53,22 @@ We can see from this sample that there are significant differences between the i
 
 * The digits have different "slants", for example image 2480 is written nearly diagonally. 
 * We see different styles of writing. The digit *7* and *2* are good examples. 
-* "Poor" handwriting, such as image 2753, is an issue we need to address in our classification algorithm.
+* "Poor" handwriting, such as image 2753, is an issue we may need to address in our classification algorithm.
 * Some digits are are more faded than others.
 
 While there are some issues, we also notice that the data is generally of good quality. There aren't any misclassifications that we see from this sample. The digits are also written "correctly"; there no digits written backwards for example. Lastly, we see that written digits are generally horizontally centered.
+
+## A Little Bit Deeper
+It might be useful, not to mention interesting, if we take the average of each pixel for each digit to see what we get.
+```{r average}
+par(mfrow=c(2, 5), pty='s', mai=c(0, 0, 0, 0))
+for (lab in 0:9) {
+  subs <- digits.train[digits.train$label == lab, ]
+  avg <- colMeans(subs)
+  img <- matrix(avg[2:length(avg)], 28, 28, byrow = TRUE)
+  image(t(img)[,28:1], axes = FALSE, col = grey(seq(1, 0, length = 256)))
+  box(lty = 'solid')
+}
+```
+This is interesting because we can see that despite the different styles and quality of handwriting, the pixels for each digit are generally in the same area. This also means there are some pixels that are never used or used very little
+
