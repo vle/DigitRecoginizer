@@ -1,0 +1,37 @@
+---
+title: "MNIST Digit Recognizer using a simple Multi-Layer Perceptron"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+
+```{r Setup}
+#install.packages("neuralnet")
+library(neuralnet)
+
+```
+
+```{r load_data}
+data_file.path <- "../data"
+data_file.train <- paste(data_file.path, "train.csv", sep="/")
+data_file.test <- paste(data_file.path, "test.csv", sep="/")
+
+digits.train <- read.csv(data_file.train)
+digits.test <- read.csv(data_file.test)
+
+```
+
+```{r train}
+training <- digits.train[1:4200,]
+validation <- digits.train[4201:8400,]
+
+f <- as.formula(paste("label~", paste(names(digits.train[,-1]), collapse = "+")))
+
+nn.model <- neuralnet(f, data = training, hidden = c(128, 64))
+```
+
+```{r predict}
+nn.predict <- compute(nn.model, validation[, -1])
+```
+
