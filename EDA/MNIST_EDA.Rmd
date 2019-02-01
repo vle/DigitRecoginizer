@@ -71,8 +71,20 @@ for (lab in 0:9) {
   box(lty = 'solid')
 }
 ```
-This is interesting because we can see that despite the different styles and quality of handwriting, the pixels for each digit are generally in the same area. This also means there are some pixels that are never used or at least used very little.
-```{r}
+This is interesting because we can see that despite the different styles and quality of handwriting, the pixels for each digit are generally in the same area. This also means there are some pixels that are never used or at least used very little. The following shows how much each pixel was used in the entire training set. The darker the color, the more the pixel was used. A lighter color indicates that the pixel was not used or used very rarely.
+```{r sum}
+par(pty='s')
+pixels.sum <- colSums(digits.train.scaled[, -1])
+img <- matrix (pixels.sum, 28, 28, byrow = TRUE)
+img.norm <- img/max(img)
+image(t(img.norm)[,28:1], axes = FALSE, col = grey (seq(1, 0, length = 256)))
+box(lty = 'solid')
+```
+Again we see that there's a lot of white space indicating the pixels were never used. To reduce dimensionality and complexity, we could ignore all the white and extremely light pixels. Visually, we only need to approximately consider the following area, which is about  336 pixels, potentially reduce the dimensionality in half.
+```{r smaller_area}
+par(pty = 's')
+image(t(img)[7:22,25:5], axes=FALSE, col = grey (seq(1, 0, length = 256)))
+box(lty= 'solid')
 
 ```
 
