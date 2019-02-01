@@ -15,6 +15,7 @@ digits.path <- "../data"
 digits.train.path <- paste(digits.path, "train.csv", sep = "/")
 
 digits.train <- read.csv(digits.train.path, header = TRUE)
+digits.train.scaled <- cbind('label' = digits.train$label, digits.train[,-1]/255)
 ```
 
 ## Previewing the Data
@@ -37,7 +38,7 @@ To see quickly see what we're dealing with, we'll visually inspect 12 ramdomly s
 ```{r images, fig.asp = 1.3}
 par(mfrow=c(10, 12), pty='s', mai=c(0.2, 0, 0, 0.1))
 for (lab in 0:9) {
-  subs <- digits.train[digits.train$label == lab, ]
+  subs <- digits.train.scaled[digits.train.scaled$label == lab, ]
   index <- sample(1:nrow(subs), size = 12)
   samp <- subs[index, ]
   for (i in 1:12) {
@@ -51,9 +52,9 @@ for (lab in 0:9) {
 
 We can see from this sample that there are significant differences between the images of the same digit. Some issues that immediately pop out are:
 
-* The digits have different "slants", for example image 2480 is written nearly diagonally. 
+* The digits have different "slants", for example image 831 is written nearly diagonally. 
 * We see different styles of writing. The digit *7* and *2* are good examples. 
-* "Poor" handwriting, such as image 2753, is an issue we may need to address in our classification algorithm.
+* "Poor" handwriting, such as image 2759, is an issue we may need to address in our classification algorithm.
 * Some digits are are more faded than others.
 
 While there are some issues, we also notice that the data is generally of good quality. There aren't any misclassifications that we see from this sample. The digits are also written "correctly"; there no digits written backwards for example. Lastly, we see that written digits are generally horizontally centered.
@@ -63,12 +64,16 @@ It might be useful, not to mention interesting, if we take the average of each p
 ```{r average}
 par(mfrow=c(2, 5), pty='s', mai=c(0, 0, 0, 0))
 for (lab in 0:9) {
-  subs <- digits.train[digits.train$label == lab, ]
+  subs <- digits.train.scaled[digits.train.scaled$label == lab, ]
   avg <- colMeans(subs)
   img <- matrix(avg[2:length(avg)], 28, 28, byrow = TRUE)
   image(t(img)[,28:1], axes = FALSE, col = grey(seq(1, 0, length = 256)))
   box(lty = 'solid')
 }
 ```
-This is interesting because we can see that despite the different styles and quality of handwriting, the pixels for each digit are generally in the same area. This also means there are some pixels that are never used or used very little
+This is interesting because we can see that despite the different styles and quality of handwriting, the pixels for each digit are generally in the same area. This also means there are some pixels that are never used or at least used very little.
+```{r}
+
+```
+
 
