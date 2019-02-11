@@ -1,0 +1,281 @@
+[{
+  "data": "Loading required package: methods\n",
+  "stream_name": "stderr",
+  "time": 1.740004110000882
+},{
+  "data": "[1] \"model started  2019-02-02 00:05:41\"\n",
+  "stream_name": "stdout",
+  "time": 2.000186171000678
+},{
+  "data": "prepping data: 17.282 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 19.282316173001163
+},{
+  "data": "[1] \"Starting Epoch 1\"\n",
+  "stream_name": "stdout",
+  "time": 20.133720064000954
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 20.954070766001678
+},{
+  "data": "    272\terror: ",
+  "stream_name": "stdout",
+  "time": 208.49528283600011
+},{
+  "data": "104.07196\ttime: 3.13 mins\n",
+  "stream_name": "stdout",
+  "time": 208.49963027600097
+},{
+  "data": "Epoch 1: 226.498 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 246.6313126569985
+},{
+  "data": "[1] \"Mean Accuracy: 0.952142857142857\"\n",
+  "stream_name": "stdout",
+  "time": 246.69298864300072
+},{
+  "data": "[1] \"Accuracy Change: \"\n",
+  "stream_name": "stdout",
+  "time": 246.69639612600076
+},{
+  "data": "[1] \"Starting Epoch 2\"\n",
+  "stream_name": "stdout",
+  "time": 247.2698820910009
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 247.78917785500016
+},{
+  "data": " ",
+  "stream_name": "stdout",
+  "time": 386.08000481899944
+},{
+  "data": " ",
+  "stream_name": "stdout",
+  "time": 386.08371916599936
+},{
+  "data": "  219\terror: 95.01818\ttime: 2.3 mins\n",
+  "stream_name": "stdout",
+  "time": 386.0911717650015
+},{
+  "data": "Epoch 2: 184.783 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 432.0530140509982
+},{
+  "data": "[1] \"Mean Accuracy: 0.961190476190476\"\n",
+  "stream_name": "stdout",
+  "time": 432.1346016179996
+},{
+  "data": "[1] \"Accuracy Change: 0.0180952380952381\"\n",
+  "stream_name": "stdout",
+  "time": 432.138920505
+},{
+  "data": "[1] \"Starting Epoch 3\"\n",
+  "stream_name": "stdout",
+  "time": 432.7183683559997
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 433.2594817040008
+},{
+  "data": "     99",
+  "stream_name": "stdout",
+  "time": 495.1738011890011
+},{
+  "data": "\terror: 101.01511\ttime: 1.03 mins\n",
+  "stream_name": "stdout",
+  "time": 495.1776033360002
+},{
+  "data": "Epoch 3: 106.808 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 539.5259207790004
+},{
+  "data": "[1]",
+  "stream_name": "stdout",
+  "time": 539.5934609670003
+},{
+  "data": " \"Mean Accuracy: 0.969206349206349\"\n[1] \"Accuracy Change: 0.015\"\n",
+  "stream_name": "stdout",
+  "time": 539.5972641389999
+},{
+  "data": "[1] \"Starting Epoch 4\"\n",
+  "stream_name": "stdout",
+  "time": 540.1749007420003
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 540.743312306
+},{
+  "data": " ",
+  "stream_name": "stdout",
+  "time": 619.3275102859989
+},{
+  "data": "   126",
+  "stream_name": "stdout",
+  "time": 619.3305725870014
+},{
+  "data": "\terror: 87.50463\ttime: 1.31 mins\n",
+  "stream_name": "stdout",
+  "time": 619.3329477769985
+},{
+  "data": "Epoch 4: 126.073 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 666.2476941579989
+},{
+  "data": "[1] \"Mean Accuracy: 0.973214285714286\"\n[1] \"Accuracy Change: 0\"\n",
+  "stream_name": "stdout",
+  "time": 666.3141461779996
+},{
+  "data": "[1] \"Starting Epoch 5\"\n",
+  "stream_name": "stdout",
+  "time": 666.8791660229981
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 667.4667287240009
+},{
+  "data": "     65\terror: 84.01184\ttime: 41.15 secs\n",
+  "stream_name": "stdout",
+  "time": 708.6237933970006
+},{
+  "data": "Epoch 5: 89.191 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 756.0696134169993
+},{
+  "data": "[1]",
+  "stream_name": "stdout",
+  "time": 756.1305067440007
+},{
+  "data": " \"Mean Accuracy: 0.976095238095238\"\n[1] \"Accuracy Change: 0.00238095238095237\"\n",
+  "stream_name": "stdout",
+  "time": 756.133575980999
+},{
+  "data": "[1] \"Starting Epoch 6\"\n",
+  "stream_name": "stdout",
+  "time": 756.7082620789988
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 757.0967005999992
+},{
+  "data": "     83\terror: 73.00621",
+  "stream_name": "stdout",
+  "time": 808.5133406489986
+},{
+  "data": "\ttime: 51.42 secs\n",
+  "stream_name": "stdout",
+  "time": 808.5168196199993
+},{
+  "data": "Epoch 6: 102.28 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 858.9890549869997
+},{
+  "data": "[1] \"Mean Accuracy: 0.978055555555556\"\n[1]",
+  "stream_name": "stdout",
+  "time": 859.0511730120015
+},{
+  "data": " \"Accuracy Change: 0.000238095238095259\"\n",
+  "stream_name": "stdout",
+  "time": 859.053352723
+},{
+  "data": "[1] \"Starting Epoch 7\"\n",
+  "stream_name": "stdout",
+  "time": 859.6332958870007
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 860.2011595949989
+},{
+  "data": "     86\terror: 75.0026 ",
+  "stream_name": "stdout",
+  "time": 914.5784262060006
+},{
+  "data": "\ttime: 54.38 secs\n",
+  "stream_name": "stdout",
+  "time": 914.5832654730002
+},{
+  "data": "Epoch 7: 105.596 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 965.2302242439982
+},{
+  "data": "[1] \"Mean Accuracy: 0.979421768707483\"\n[1] \"Accuracy Change: -0.000238095238095259\"\n",
+  "stream_name": "stdout",
+  "time": 965.2924135139983
+},{
+  "data": "[1] \"Starting Epoch 8\"\n",
+  "stream_name": "stdout",
+  "time": 965.8687356509981
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 966.3124967500007
+},{
+  "data": "   ",
+  "stream_name": "stdout",
+  "time": 1024.201755705999
+},{
+  "data": "  92\terror: 63.5049 \ttime: 57.89 secs\n",
+  "stream_name": "stdout",
+  "time": 1024.2046203399987
+},{
+  "data": "Epoch 8: 107.676 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 1073.544812229
+},{
+  "data": "[1] \"Mean Accuracy: 0.980535714285714\"\n[1] \"Accuracy Change: 0.000714285714285667\"\n",
+  "stream_name": "stdout",
+  "time": 1073.611620956999
+},{
+  "data": "[1] \"Starting Epoch 9\"\n",
+  "stream_name": "stdout",
+  "time": 1074.1963641799994
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 1074.7216824940006
+},{
+  "data": "     55\terror: 72.00168\ttime: 35.19 secs\n",
+  "stream_name": "stdout",
+  "time": 1109.9190213990005
+},{
+  "data": "Epoch 9: 86.265 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 1160.4622223779988
+},{
+  "data": "[1] \"Mean Accuracy: 0.981957671957672\"",
+  "stream_name": "stdout",
+  "time": 1160.5310199080013
+},{
+  "data": "\n[1] \"Accuracy Change: 0.005\"\n",
+  "stream_name": "stdout",
+  "time": 1160.5372053520005
+},{
+  "data": "[1] \"Starting Epoch 10\"\n",
+  "stream_name": "stdout",
+  "time": 1161.1136068669985
+},{
+  "data": "hidden: 128, 64    thresh: 0.01    rep: 1/1    steps: ",
+  "stream_name": "stdout",
+  "time": 1161.4825827899986
+},{
+  "data": "     54\terror: 67.00242",
+  "stream_name": "stdout",
+  "time": 1195.233138184998
+},{
+  "data": "\ttime: 33.75 secs\n",
+  "stream_name": "stdout",
+  "time": 1195.2366090430005
+},{
+  "data": "Epoch 10: 84.625 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 1245.739056284001
+},{
+  "data": "[1] \"Mean Accuracy: 0.982928571428571\"\n[1] \"Accuracy Change: -0.00166666666666659\"\n",
+  "stream_name": "stdout",
+  "time": 1245.806186943999
+},{
+  "data": "Total Training Time: 1226.523 sec elapsed\n",
+  "stream_name": "stdout",
+  "time": 1245.8120151420007
+}]
