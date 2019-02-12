@@ -33,15 +33,13 @@ accuracy <- NULL
 weights <- NULL
 K = 10
 tic("Total Training Time")
-for (k in 1:K)
-{
+for (k in 1:K) {
     hold <- (.10*(k-1)*nrow(training.scaled) + 1):(.10*k*nrow(training.scaled))
     tr <- training.scaled[-hold, ]
     vl <- training.scaled[hold, ]
     tic(paste("Epoch", k))
     print(paste("Starting Epoch", k))
-    nn.model <- neuralnet(f, data = tr, hidden = c(floor(length(pixels.select) * 0.66)), linear.output = FALSE)
-    weights <- nn.model$weights
+    nn.model <- neuralnet(f, data = tr, hidden = c(floor(length(pixels.select) * 2/3)), linear.output = FALSE)
     toc()
     nn.predict <- compute(nn.model, vl[, pixels.select])
 

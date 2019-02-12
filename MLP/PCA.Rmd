@@ -1,0 +1,85 @@
+---
+title: "PCA of MNIST Digits"
+output: html_notebook
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries}
+library(nnet)
+
+```
+
+```{r load_data}
+
+data_file.path <- "/home/viet/Kaggle/DigitRecoginizer/data"
+data_file.train <- paste(data_file.path, "train.csv", sep="/")
+data_file.test <- paste(data_file.path, "test.csv", sep="/")digits.train <- read.csv(data_file.train)
+digits.test <- read.csv(data_file.test)
+```
+
+```{r preprocess}
+onehot_labels <- class.ind(as.factor(digits.train$label))
+onehot_labels.names <- sapply(0:9, function (x) paste("label", x, sep = ""))
+training.scaled <- cbind(onehot_labels, digits.train[,-1]/255)
+names(training.scaled) <- c(onehot_labels.names, names(training.scaled)[11:794])
+
+
+pixels.sum <- colSums(training.scaled[,11:794])
+pixels.norm <- pixels.sum/max(pixels.sum)
+pixels.select <- names(pixels.norm[pixels.norm > 0.05])
+```
+```{r pca}
+f <-  as.formula(paste( "~", paste(pixels.select, collapse = '+')))
+
+pc <- prcomp(f, data = training.scaled)
+```
+```{r}
+
+```
+
+```{r plot_cumsum}
+prop_var <- (pc$sdev^2)/sum(pc$sdev^2)
+plot(cumsum(prop_var), xlab = "Principle Componenents", ylab = "Percent of Variance Explained",  type = 'b')
+lines(-50:400, rep(.95, 451), col = 'red')
+lines(rep(131, 101), seq(0,1, length=101), col = 'red')
+```
+
+
+```{r}
+var_threshold <- 0.98
+num_PC <- sum(cumsum(prop_var) < var_threshold)
+
+pc_train <- data.frame(training.scaled[,1:10], pc$x[,1:num_PC])
+f <- as.formula(paste(paste(onehot_labels.names, collapse = '+'), 
+                      paste(names(pc_train)[11:ncol(pc_train)], collapse = '+'), sep = '~'))
+tic.clear()
+tic("Total Training Time")
+K = 10
+for (k in 1:K)
+{
+    hold <- (.10*(k-1)*nrow(pc_train) + 1):(.10*k*nrow(pc_train))
+    tr <- pc_train[-hold, ]
+    vl <- pc_train[hold, ]
+    tic(paste("Epoch", k))
+    print(paste("Starting Epoch", k))
+    nn.model <- neuralnet(f, data = tr, hidden = c(floor(num_PC * 0.66)), linear.output = FALSE)
+    toc()
+    nn.predict <- compute(nn.model, vl[, 11:num_PC])
+
+    accuracy[k] <- sum(max.col(nn.predict$net.result) - 1 == digits.train$label[hold])/(.10 * nrow(digits.train))
+    print(accuracy)
+    print(paste("Mean Accuracy:", mean(accuracy)))
+    if (k == 1 || (accuracy[k] > accuracy[k-1])) {
+        nn.model.best <- nn.model
+    }
+}
+toc()
+
+```
+
+
